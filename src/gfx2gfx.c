@@ -30,7 +30,7 @@
 #include "../lib/gfxsource.h"
 #include "../lib/gfxdevice.h"
 #include "../lib/gfxpoly.h"
-#include "../lib/devices/pdf.h"
+/*#include "../lib/devices/pdf.h"*/
 #include "../lib/devices/swf.h"
 #include "../lib/devices/text.h"
 #include "../lib/devices/render.h"
@@ -266,8 +266,8 @@ int main(int argn, char *argv[])
             gfxdevice_text_init(out);
         } else if(!strcasecmp(format, "log")) {
             gfxdevice_file_init(out, "/tmp/device.log");
-        } else if(!strcasecmp(format, "pdf")) {
-            gfxdevice_pdf_init(out);
+       /* } else if(!strcasecmp(format, "pdf")) {
+            gfxdevice_pdf_init(out);*/
         } else {
 	    msg("<error> Invalid output format: %s", format);
 	    exit(1);

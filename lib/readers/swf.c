@@ -305,10 +305,10 @@ static void textcallback(void*self, int*chars, int*xpos, int nr, int fontid, int
 	sprintf(fontidstr, "%d", fontid);
 	gfxfont->id = fontidstr;
 	
-	if (gfxfontlist_hasfont(get_internal(info->r->device)->fontlist, gfxfont)) {
+/*	if (gfxfontlist_hasfont(get_internal(info->r->device)->fontlist, gfxfont)) {
 		// Use the fixed version if it exists
 		gfxfont = gfxfontlist_findfont(get_internal(info->r->device)->fontlist, fontidstr);
-	} else {
+	} else {*/
 		gfxfont->num_glyphs = font->swffont->numchars;
 		gfxfont->max_unicode = font->swffont->maxascii;
 		/*gfxfont->ascent = font->swffont->layout->ascent/20;*/
@@ -357,7 +357,7 @@ static void textcallback(void*self, int*chars, int*xpos, int nr, int fontid, int
 		gfxfont->descent = bymax;
 		
 		info->r->device->addfont(info->r->device, gfxfont);
-	}
+	/*}*/
 
 	#ifdef SINGLE_PASS
 	gfxmatrix_t gms[nr + 32];
