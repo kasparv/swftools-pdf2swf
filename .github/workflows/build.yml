@@ -1,0 +1,34 @@
+name: Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential \
+            autoconf automake libtool \
+            zlib1g-dev libjpeg-dev libgif-dev libfreetype6-dev \
+            libpng-dev
+
+      - name: Configure
+        run: ./configure --prefix="$HOME/.local"
+
+      - name: Build
+        run: make
+      
+      - name: Smoke test pdf2swf
+        run: |
+          ./src/pdf2swf -V || ./src/pdf2swf -h

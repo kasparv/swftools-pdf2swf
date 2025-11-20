@@ -1,3 +1,52 @@
+[![Build](https://github.com/kasparv/swftools-pdf2swf/actions/workflows/build.yml/badge.svg)](https://github.com/kasparv/swftools-pdf2swf/actions/workflows/build.yml)
+
+==================================================
+About this fork: swftools-pdf2swf (kasparv)
+==================================================
+
+This fork is based on https://github.com/flanter21/swftools and focuses on
+keeping **pdf2swf** and related tools buildable on modern Linux distributions
+**without requiring the proprietary PDFlib library**.
+
+This fork applies the following changes:
+
+ - Remove the hard PDFlib dependency from the build system.
+ - Introduce a small stub implementation (`dummy_pdflib.c`) so that SWF→PDF-only
+   code paths still link cleanly when PDFlib is not available.
+ - Fix modern GCC/Clang build errors in various components
+ - Ensure all pdf2swf-related features continue working using only the bundled
+   XPDF/poppler-derived open-source PDF engine.
+ - Add a CI workflow (GitHub Actions) to verify builds on Ubuntu.
+
+This fork is intended for users who need **PDF → SWF conversion** (pdf2swf),
+and do not require the optional SWF → PDF functionality that relied on PDFlib.
+
+==================================================
+Build instructions for this fork
+==================================================
+
+Prerequisites (Ubuntu / Debian / Amazon Linux):
+
+    sudo apt-get install \
+        autoconf automake libtool \
+        zlib1g-dev libjpeg-dev libgif-dev libpng-dev \
+        libfreetype6-dev
+
+or on RHEL/Amazon Linux:
+
+    sudo yum install \
+        autoconf automake libtool \
+        zlib-devel libjpeg-devel giflib-devel \
+        libpng-devel freetype-devel
+
+Steps:
+
+    ./configure --prefix="$HOME/.local"
+    make
+    make install     (optional)
+
+The build intentionally avoids PDFlib and uses only open-source dependencies.
+
 # Compile instructions
 1) Clone repo
 ```
