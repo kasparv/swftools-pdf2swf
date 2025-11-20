@@ -1,8 +1,6 @@
 [![Build](https://github.com/kasparv/swftools-pdf2swf/actions/workflows/build.yml/badge.svg)](https://github.com/kasparv/swftools-pdf2swf/actions/workflows/build.yml)
 
-==================================================
-About this fork: swftools-pdf2swf (kasparv)
-==================================================
+About this fork: swftools-pdf2swf
 
 This fork is based on https://github.com/flanter21/swftools and focuses on
 keeping **pdf2swf** and related tools buildable on modern Linux distributions
@@ -21,9 +19,7 @@ This fork applies the following changes:
 This fork is intended for users who need **PDF → SWF conversion** (pdf2swf),
 and do not require the optional SWF → PDF functionality that relied on PDFlib.
 
-==================================================
-Build instructions for this fork
-==================================================
+Build instructions
 
 Prerequisites (Ubuntu / Debian / Amazon Linux):
 
