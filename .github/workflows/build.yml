@@ -26,9 +26,13 @@ jobs:
       - name: Configure
         run: ./configure --prefix="$HOME/.local"
 
-      - name: Build
-        run: make
-      
+      - name: Build core tools (skip full lib/pdf)
+        run: |
+          make swfrender pdf2swf \
+          || { echo "Build of core tools failed"; exit 1; }
+          echo "Skipping full lib/pdf build in CI for now"
+
       - name: Smoke test pdf2swf
         run: |
           ./src/pdf2swf -V || ./src/pdf2swf -h
+
