@@ -28,8 +28,8 @@ jobs:
 
       - name: Build tools and xpdf part (allow errors)
         run: |
-          make -C lib pdf       # build the PDF library part
-          make -k               # build the rest, continue even if pdf part fails
+          make -C lib pdf || true
+          make
 
       - name: Smoke test pdf2swf
         run: |
